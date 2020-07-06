@@ -1,11 +1,23 @@
 import React from "react"
 
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 
 export default function Layout({ children }) {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+
   return (
     <div
       css={css`
@@ -23,16 +35,25 @@ export default function Layout({ children }) {
             font-style: normal;
           `}
         >
-          Padas Eats Lots
+          {data.site.siteMetadata.title}
         </h3>
       </Link>
       <Link
         to={`/about/`}
         css={css`
           float: right;
+          margin-left: 10px;
         `}
       >
         About
+      </Link>
+      <Link
+        to={`/my-files/`}
+        css={css`
+          float: right;
+        `}
+      >
+        My files
       </Link>
 
       {children}
