@@ -27,6 +27,14 @@ export default function Layout({ children }) {
         padding-top: ${rhythm(1.5)};
       `}
     >
+      <Link
+        to={`/my-files/`}
+        css={css`
+          float: right;
+        `}
+      >
+        My files
+      </Link>
       <Link to="/">
         <h3
           css={css`
@@ -42,18 +50,10 @@ export default function Layout({ children }) {
         to={`/about/`}
         css={css`
           float: right;
-          margin-left: 10px;
+          margin-right: 10px;
         `}
       >
         About
-      </Link>
-      <Link
-        to={`/my-files/`}
-        css={css`
-          float: right;
-        `}
-      >
-        My files
       </Link>
 
       {children}
